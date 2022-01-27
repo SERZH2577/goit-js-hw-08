@@ -16,8 +16,13 @@ populateInputText();
 function onFormSubmit(e) {
   e.preventDefault();
 
-  if (localStorage.getItem(STORAGE_KEY)) {
-    console.log(feedbackFormData);
+  if (!inputEl.value) {
+    alert('Поле "Email" должно быть заполнено!');
+  } else {
+    console.log({
+      email: inputEl.value,
+      message: textareaEl.value,
+    });
   }
 
   e.currentTarget.reset();
@@ -28,11 +33,9 @@ function onTextInput(e) {
   feedbackFormData[e.target.name] = e.target.value;
 
   localStorage.setItem(STORAGE_KEY, JSON.stringify(feedbackFormData));
-
-  console.log(feedbackFormData);
 }
 
-function populateInputText(e) {
+function populateInputText() {
   const saveText = localStorage.getItem(STORAGE_KEY);
 
   if (saveText) {
