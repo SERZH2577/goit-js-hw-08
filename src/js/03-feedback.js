@@ -16,17 +16,15 @@ populateInputText();
 function onFormSubmit(e) {
   e.preventDefault();
 
-  if (!inputEl.value) {
-    alert('Поле "Email" должно быть заполнено!');
-  } else {
+  if (inputEl.value && textareaEl.value) {
     console.log({
       email: inputEl.value,
       message: textareaEl.value,
     });
-  }
 
-  e.currentTarget.reset();
-  localStorage.removeItem(STORAGE_KEY);
+    e.currentTarget.reset();
+    localStorage.removeItem(STORAGE_KEY);
+  }
 }
 
 function onTextInput(e) {
